@@ -1,0 +1,136 @@
+:root {
+  --background: #ffffff;
+  --card-bg: #f9f9ff;
+  --text: #2c2c54;
+  --accent: #4a4a7d;
+}
+
+body.dark {
+  --background: #0A0908;
+  --card-bg: #22333B;
+  --text: #f8f9fa;
+  --accent: #8db0c8;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dashboard {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: var(--background);
+  padding: 40px;
+  border-radius: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-header h2,
+.dashboard h3 {
+  color: var(--text);
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Logout Button */
+.logout-button {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+/* Grid Layout */
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* Card Style */
+.certificate-preview-card {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  transition: 0.3s ease;
+}
+
+.certificate-preview-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* File Preview */
+.file-preview {
+  height: 200px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.file-preview iframe,
+.file-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Certificate Info */
+.certificate-details {
+  padding-top: 10px;
+  text-align: left;
+}
+
+.certificate-details strong {
+  display: block;
+  color: var(--text);
+}
+
+.certificate-details small {
+  color: #bbb;
+  font-size: 0.8rem;
+}
+
+.certificate-details a {
+  margin-top: 6px;
+  display: inline-block;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.certificate-details a:hover {
+  text-decoration: underline;
+}

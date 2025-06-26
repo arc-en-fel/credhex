@@ -32,7 +32,7 @@ function App() {
       <div className="app-foreground">
         <header className="navbar">
           <div className="logo">
-            <img src="/ch (2).png" alt="CredHex Logo" />
+            <img src="/ch 3.png" alt="CredHex Logo" />
             <span>CredHex</span>
           </div>
 

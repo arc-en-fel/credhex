@@ -1,6 +1,14 @@
-/* Consistent dark theme styling */
 :root {
-  --form-bg: #22333B;
+  --form-bg: rgba(255, 255, 255, 0.1);
+  --form-text: #2c2c54;
+  --form-accent: #4a4a7d;
+  --form-input-bg: #ffffff;
+  --form-input-border: #ccc;
+  --form-btn-hover: #394278;
+}
+
+body.dark {
+  --form-bg: rgba(255, 255, 255, 0.05);
   --form-text: #f5f5f5;
   --form-accent: #8db0c8;
   --form-input-bg: #1a1a1a;
@@ -14,24 +22,25 @@
   max-width: 500px;
   background-color: var(--form-bg);
   color: var(--form-text);
-  padding: 24px;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 28px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .upload-label {
   font-weight: 600;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: var(--form-text);
 }
 
 .upload-input {
-  margin-bottom: 15px;
+  margin-bottom: 18px;
   width: 100%;
-  padding: 10px 12px;
-  border-radius: 6px;
+  padding: 12px 14px;
+  border-radius: 8px;
   border: 1px solid var(--form-input-border);
   font-size: 1rem;
   background-color: var(--form-input-bg);
@@ -44,10 +53,16 @@
   background-color: var(--form-accent);
   color: white;
   border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 8px 14px;
+  border-radius: 6px;
   cursor: pointer;
   margin-right: 10px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.upload-input::file-selector-button:hover {
+  background-color: var(--form-btn-hover);
 }
 
 .upload-button {
@@ -58,8 +73,8 @@
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
+  font-weight: bold;
   transition: background-color 0.3s ease;
-  display: inline-block;
 }
 
 .upload-button:disabled {

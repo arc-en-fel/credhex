@@ -4,6 +4,11 @@
   --accent: #4a4a7d;
   --toggle-bg: #ccc;
   --toggle-thumb: #fff;
+
+  /* 👇 NEW COLOR VARIABLES */
+  --logo-text: #111827;          /* dark gray for light mode */
+  --nav-link: #1f2937;           /* even darker */
+  --nav-link-hover: #3b82f6;     /* blue hover */
 }
 
 .App.dark {
@@ -12,60 +17,70 @@
   --accent: #8db0c8;
   --toggle-bg: #555;
   --toggle-thumb: #eee;
+
+  /* 👇 NEW DARK MODE COLORS */
+  --logo-text: #ffffff;
+  --nav-link: #d1d5db;
+  --nav-link-hover: #93c5fd;
 }
 
-.App {
-  background-color: var(--app-bg);
-  color: var(--app-text);
-  min-height: 100vh;
-  padding: 20px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Aurora background setup */
-.aurora-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-/* Foreground content above Aurora */
-.app-foreground {
-  position: relative;
-  z-index: 1;
-}
-
-/* Header styling */
-.app-header-bar {
+/* ✅ NAVBAR HEADER STYLES ✅ */
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 16px 24px;
   margin-bottom: 30px;
-  padding: 0 10px;
-  backdrop-filter: blur(6px);
-  background-color: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.08); /* Slightly more visible on light bg */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  flex-wrap: wrap;
 }
 
-.App.dark .app-header-bar {
-  background-color: rgba(0, 0, 0, 0.3);
+.App.dark .navbar {
+  background-color: rgba(0, 0, 0, 0.4); /* Darker for contrast */
 }
 
-/* App title */
-.app-title {
-  font-size: 2rem;
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
   font-weight: bold;
-  color: var(--app-text);
+  color: var(--logo-text); /* NEW variable */
+}
+.logo img {
+  height: 36px;
+  width: 36px;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: white;
+  padding: 4px;
 }
 
-/* Toggle Switch */
+/* Toggle + Links Container */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* Links (About, Contact) */
+.nav-links a {
+  text-decoration: none;
+  color: var(--nav-link); /* NEW variable */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.nav-links a:hover {
+  color: var(--nav-link-hover);
+}
+
+/* 🌙 Toggle Switch */
 .toggle-switch {
   position: relative;
   display: inline-block;
@@ -84,9 +99,14 @@
   cursor: pointer;
   top: 0; left: 0;
   right: 0; bottom: 0;
-  background-color: var(--toggle-bg);
+  background-color: #bbb; /* Clearer base background */
   transition: 0.4s;
   border-radius: 34px;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.App.dark .toggle-switch .slider {
+  background-color: #444; /* Visible in dark mode */
 }
 
 .toggle-switch .slider:before {
@@ -96,9 +116,10 @@
   width: 18px;
   left: 4px;
   bottom: 4px;
-  background-color: var(--toggle-thumb);
+  background-color: #fff;
   transition: 0.4s;
   border-radius: 50%;
+  border: 1px solid #999;
 }
 
 .toggle-switch input:checked + .slider {
@@ -107,4 +128,30 @@
 
 .toggle-switch input:checked + .slider:before {
   transform: translateX(24px);
+  background-color: #fff;
+  border: 1px solid var(--accent);
+}
+
+/* 📱 Responsive Navbar */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
 }

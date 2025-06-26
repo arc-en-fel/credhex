@@ -5,7 +5,7 @@ import Dashboard from './components/Dashboard';
 import Features from './components/Features';
 import Aurora from './Aurora';
 import './App.css';
-import './Aurora.css'; // for .aurora-container styles
+import './Aurora.css';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -22,7 +22,6 @@ function App() {
 
   return (
     <div className={`App ${darkMode ? 'dark' : ''}`}>
-      {/* 🔮 Aurora Background */}
       <Aurora
         colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
         blend={0.5}
@@ -30,20 +29,30 @@ function App() {
         speed={0.5}
       />
 
-      {/* 🌐 Foreground UI */}
       <div className="app-foreground">
-        <div className="app-header-bar">
-          <h1 className="app-title">CredHex - Your Certificate Vault</h1>
+        <header className="navbar">
+          <div className="logo">
+            <img src="/ch (2).png" alt="CredHex Logo" />
+            <span>CredHex</span>
+          </div>
 
-          <label className="toggle-switch">
-            <input
-              type="checkbox"
-              checked={darkMode}
-              onChange={() => setDarkMode(!darkMode)}
-            />
-            <span className="slider"></span>
-          </label>
-        </div>
+          <nav className="nav-links">
+            {!user && (
+              <>
+                <a href="#about">AboutUs</a>
+                <a href="#contact">ContactUs</a>
+              </>
+            )}
+            <label className="toggle-switch">
+              <input
+                type="checkbox"
+                checked={darkMode}
+                onChange={() => setDarkMode(!darkMode)}
+              />
+              <span className="slider"></span>
+            </label>
+          </nav>
+        </header>
 
         {user ? (
           <Dashboard user={user} onLogout={() => setUser(null)} />
@@ -51,6 +60,20 @@ function App() {
           <>
             <Auth onAuth={setUser} />
             <Features />
+
+            <section id="about" className="info-section">
+              <h2>About Us</h2>
+              <p>
+                CredHex is your digital certificate vault. We provide a secure and convenient way to upload, store, and manage your important documents in one place.
+              </p>
+            </section>
+
+            <section id="contact" className="info-section">
+              <h2>Contact Us</h2>
+              <p>Email: support@credhex.com</p>
+              <p>Email: deepakbhaskaran4@gmail.com</p>
+              <p>Phone: +91 9744260689</p>
+            </section>
           </>
         )}
       </div>
